@@ -135,7 +135,7 @@ public class AqtRegister extends Dialog {
 		
 		Label ltitle = new Label(compTitle, SWT.NONE);
 		
-    	ltitle.setImage(SWTResourceManager.getImage("images/tit_register.png"));
+    	ltitle.setImage(AqtMain.getMyimage("tit_register.png"));
 
 		Label lblCode = new Label(compHeader, SWT.NONE);
 		lblCode.setFont(IAqtVar.font1);

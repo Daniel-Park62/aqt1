@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import javax.persistence.Persistence;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.StatusLineManager;
 import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -269,9 +271,9 @@ public class AqtMain extends ApplicationWindow {
 	}
 
 	private void menuCreate(Composite parent ) {
-		Image img_logo = SWTResourceManager.getImage( "images/logo.png");
-		Image img_result = SWTResourceManager.getImage( "images/result.png");
-		Image img_oper = SWTResourceManager.getImage( "images/operating.png");
+		Image img_logo = AqtMain.getMyimage("logo.png");
+		Image img_result = AqtMain.getMyimage("result.png");
+		Image img_oper = AqtMain.getMyimage("operating.png");
 
 		Color mcfore = SWTResourceManager.getColor(240,250,240) ;
 		Composite comp_menu = new Composite(parent, SWT.NONE);
@@ -430,6 +432,20 @@ public class AqtMain extends ApplicationWindow {
 		comp_1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 		comp_1.setBackground(comp_menu.getBackground());
 		// composite_8.setBackground(new Color (Display.getCurrent(), 159, 170, 222));
+		lblist = new Label(comp_1, SWT.BOLD);
+		menuLabel(lblist);
+		lblist.setText("Step0.\n 서비스관리");
+		lblist.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseUp(MouseEvent e) {
+				if (container.getToolTipText() == "AqtRegSvc" ) return;
+				delWidget(container);
+				new AqtRegSvc(container, SWT.NONE);
+				container.layout();
+				container.setToolTipText("AqtRegSvc");
+			}
+		});
+		
 
 		{
 			lbl = new Label(comp_1, SWT.NONE);
@@ -604,6 +620,23 @@ public class AqtMain extends ApplicationWindow {
 		
 	}
 	
+	private static Map<String, Image> m_imageMap = new HashMap<String, Image>();
+	public static Image getMyimage(String nm) {
+		Image image = m_imageMap.get(nm);
+		if (image == null) {
+			try {
+				URL url = aqtmain.getClass().getClassLoader().getResource(nm);
+				ImageDescriptor imgDesc = ImageDescriptor.createFromURL(url);
+				
+				image = imgDesc.createImage() ;
+				m_imageMap.put(nm, image);
+			} catch (Exception e) {
+				m_imageMap.put(nm, image);
+			}
+		}
+		return image;
+		
+	}
 	
 	private void menuLabel(Label label) {
 		label.setFont(SWTResourceManager.getFont( "맑은 고딕", 13, SWT.NORMAL));

@@ -85,7 +85,7 @@ public class AqtLogin extends Dialog {
 		});
 		
 		lbluser = new Label(container,SWT.NONE); 
-		lbluser.setImage(SWTResourceManager.getImage("images/user2.png"));
+		lbluser.setImage(AqtMain.getMyimage("user2.png"));
 		lbluser.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		lbluser.setBounds(720, 383,64,36);
 
@@ -93,23 +93,23 @@ public class AqtLogin extends Dialog {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				AqtMain.authtype = AuthType.USER ;
-				lbltester.setImage(SWTResourceManager.getImage("images/tester1.png"));
-				lbluser.setImage(SWTResourceManager.getImage("images/user2.png"));
+				lbltester.setImage(AqtMain.getMyimage("tester1.png"));
+				lbluser.setImage(AqtMain.getMyimage("user2.png"));
 			}
 			
 		});
 
 		
 		lbltester = new Label(container,SWT.NONE); 
-		lbltester.setImage(SWTResourceManager.getImage("images/tester1.png"));
+		lbltester.setImage(AqtMain.getMyimage("tester1.png"));
 		lbltester.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		lbltester.setBounds(795, 383,64,36);
 		lbltester.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				AqtMain.authtype = AuthType.TESTADM ;
-				lbltester.setImage(SWTResourceManager.getImage("images/tester2.png"));
-				lbluser.setImage(SWTResourceManager.getImage("images/user1.png"));
+				lbltester.setImage(AqtMain.getMyimage("tester2.png"));
+				lbluser.setImage(AqtMain.getMyimage("user1.png"));
 			}
 		});
 
@@ -136,7 +136,7 @@ public class AqtLogin extends Dialog {
 		lblmsg.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		
 		Label lbl = new Label(container , SWT.NONE) ;
-		lbl.setImage(SWTResourceManager.getImage("images/loginbtn.png"));
+		lbl.setImage(AqtMain.getMyimage("loginbtn.png"));
 		lbl.setBounds(721, 503, 200,64);
 		lbl.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		lbl.setCursor(IAqtVar.handc);
@@ -149,7 +149,7 @@ public class AqtLogin extends Dialog {
 		});
 
 		lbl = new Label(container , SWT.NONE) ;
-		lbl.setImage(SWTResourceManager.getImage("images/cancelbtn.png"));
+		lbl.setImage(AqtMain.getMyimage("cancelbtn.png"));
 		lbl.setBounds(936, 503, 200,64) ;
 		lbl.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		lbl.addMouseListener(new MouseAdapter() {

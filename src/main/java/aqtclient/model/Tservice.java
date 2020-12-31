@@ -16,15 +16,26 @@ public class Tservice implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String svcid;
+	private String svcid = "";
 
-	private String svceng;
+	private String svceng = "";
 
-	private String svckind;
+	private String svckind  = "";
 
-	private String svckor;
+	private String svckor = "";
+	
+	@Transient
+	private boolean isNew = false ;
 	
 	public Tservice() {
+	}
+
+	public boolean isNew() {
+		return isNew;
+	}
+
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
 	}
 
 	public String getSvcid() {
